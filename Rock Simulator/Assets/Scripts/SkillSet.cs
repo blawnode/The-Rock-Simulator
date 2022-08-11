@@ -60,10 +60,11 @@ public class SkillSet : MonoBehaviour
         return generatedSkills;
     }
     */
-    public static List<Skill> GenerateSkills(IDictionary<SkillName, UnityAction<Animator, List<BattleUnit>>> actionsNSkillNames)
+    public static List<Skill> GenerateSkills(IDictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>> actionsNSkillNames)
     {
         ICollection<SkillName> skillNames = actionsNSkillNames.Keys;
-        ICollection<UnityAction<Animator, List<BattleUnit>>> actions = actionsNSkillNames.Values;
+        //ICollection<UnityAction<Animator, List<BattleUnit>>> actions = actionsNSkillNames.Values;
+        ICollection<Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>> actions = actionsNSkillNames.Values;
         return GenerateSkills(skillNames, actions);
     }
 

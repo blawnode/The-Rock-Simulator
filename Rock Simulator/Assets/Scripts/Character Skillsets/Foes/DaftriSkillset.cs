@@ -1,29 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using static Enums;
+using static Skill;
 
 public class DaftriSkillset : FoeSkillSet
 {
     public static List<Skill> GenerateSkills()
     {
-        Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>> dict = new Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>>()
+        //Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>> dict = new Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>>()
+        Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>> dict
+            = new Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>>()
         {
-            {SkillName.DaftriBasicAttack, BasicAttack},
+            {SkillName.DaftriBasicAttack, new Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>(
+                BasicAttack, null, 1, ETargetType.Single)},
             //{SkillName.DaftriFart, Fart},
-            {SkillName.DaftriFuckingDie, FuckinDie},
+            {SkillName.DaftriFuckingDie, new Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>(
+                FuckinDie, null, 1, ETargetType.Single)},
         };
         return GenerateSkills(dict);
     }
 
     public static Dictionary<Skill, float> GenerateWeightedSkills()
     {
-        Dictionary<SkillName, KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>> dict = new Dictionary<SkillName, KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>>()
+        /*Dictionary<SkillName, KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>> dict = new Dictionary<SkillName, KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>>()
         {
             {SkillName.DaftriBasicAttack, new KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>(BasicAttack, 1f) },
             //{SkillName.DaftriFart, new KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>(Fart, 1f) },
             {SkillName.DaftriFuckingDie, new KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>(FuckinDie, 0.2f) },
+        };*/
+        Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>> dict
+            = new Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>>()
+        {
+            {SkillName.DaftriBasicAttack, new Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>(BasicAttack, null, 1f, ETargetType.Single) },
+            //{SkillName.DaftriFart, new KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>(Fart, 1f) },
+            {SkillName.DaftriFuckingDie, new Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>(FuckinDie, null, 0.2f, ETargetType.Single) },
         };
         return GenerateWeightedSkills(dict);
     }

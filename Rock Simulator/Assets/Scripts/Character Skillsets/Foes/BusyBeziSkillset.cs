@@ -1,16 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using static Enums;
+using static Skill;
 
 public class BusyBeziSkillset : FoeSkillSet
 {
     public static List<Skill> GenerateSkills()
     {
-        Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>> dict = new Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>>()
+        //Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>> dict = new Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>>()
+        Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>> dict
+            = new Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>>()
         {
-            {SkillName.BusyBeziBasicAttack, BasicAttack },
+            {SkillName.BusyBeziBasicAttack, new Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>(
+                BasicAttack, null, 1, ETargetType.All) },
             //{SkillName.BusyBeziWiggle, Wiggle },
         };
         return GenerateSkills(dict);
@@ -18,14 +23,21 @@ public class BusyBeziSkillset : FoeSkillSet
 
     public static Dictionary<Skill, float> GenerateWeightedSkills()
     {
-        List<Skill> list = new List<Skill>()
+        /*List<Skill> list = new List<Skill>()
         {
             new Skill(),
             ((Skill) ScriptableObject.CreateInstance(typeof(Skill))).Init()
-    }
-        Dictionary<SkillName, KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>> dict = new Dictionary<SkillName, KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>>()
+    }*/
+        /*Dictionary<SkillName, KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>> dict
+            = new Dictionary<SkillName, KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>>()
         {
             {SkillName.BusyBeziBasicAttack, new KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>(BasicAttack, 1f) },
+            //{SkillName.BusyBeziWiggle, new KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>(Wiggle, 1f) },
+        };*/
+        Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>> dict
+            = new Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>>()
+        {
+            {SkillName.BusyBeziBasicAttack, new Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>(BasicAttack, null, 1f, ETargetType.All) },
             //{SkillName.BusyBeziWiggle, new KeyValuePair<UnityAction<Animator, List<BattleUnit>>, float>(Wiggle, 1f) },
         };
         return GenerateWeightedSkills(dict);

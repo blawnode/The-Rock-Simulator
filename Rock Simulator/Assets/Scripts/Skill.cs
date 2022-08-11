@@ -18,6 +18,7 @@ public class Skill : ScriptableObject
     public float Weight { get => _weight; }
     public ETargetType TargetType { get => _targetType; }
 
+    // TODO: Worth considering: none. For abilities like Daftri's "Fuckin Die"
     public enum ETargetType
     {
         Single,

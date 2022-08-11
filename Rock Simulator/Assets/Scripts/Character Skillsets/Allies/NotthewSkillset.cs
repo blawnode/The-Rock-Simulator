@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using static Enums;
+using static Skill;
 
 public class NotthewSkillset : SkillSet
 {
@@ -11,9 +12,11 @@ public class NotthewSkillset : SkillSet
     {
         // https://stackoverflow.com/questions/6856356/how-to-get-a-methodbase-object-for-a-method
         //Dictionary<SkillName, UnityAction> dict = new Dictionary<SkillName, UnityAction>();
-        Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>> dict = new Dictionary<SkillName, UnityAction<Animator, List<BattleUnit>>>()
+        Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>> dict
+            = new Dictionary<SkillName, Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>>()
         {
-            {SkillName.NotthewBasicAttack, BasicAttack },
+            {SkillName.NotthewBasicAttack, new Tuple<UnityAction<Animator, List<BattleUnit>>, Texture2D, float, ETargetType>(
+                BasicAttack, null, 1, ETargetType.Single) },
             //{SkillName.NotthewAttackAll, BasicAttackUltra },
         };
         return GenerateSkills(dict);

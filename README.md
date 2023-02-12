@@ -6,6 +6,9 @@ Initially based off of
 [Brackey's turn-based combat tutorial][brackeys-link]
 
 \
+Made in Unity 2020.3.17f1.
+
+\
 ![SCREENSHOOOOT][gif]
 
 [brackeys-link]: https://www.youtube.com/watch?v=_1pz_ohupPs

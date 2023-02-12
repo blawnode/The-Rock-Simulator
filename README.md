@@ -6,7 +6,8 @@ Initially based off of
 [Brackey's turn-based combat tutorial][brackeys-link]
 
 \
-![SCREENSHOOOOT][screenshot]
+![SCREENSHOOOOT][gif]
 
 [brackeys-link]: https://www.youtube.com/watch?v=_1pz_ohupPs
 [screenshot]: Rock%20Simulator%20Screenshot.png
+[gif]: Rock%20Simulator%20Demo.gif
